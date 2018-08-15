@@ -105,6 +105,7 @@
 	<!-- /Home -->
 
 <!--ABOUT START-->
+
 				<section class="about" id="about">
 
 
@@ -114,7 +115,7 @@
 												{% for workshop in workshops%}
                                                     <div class="col-sm-4">
                                                             <div class="singleService">
-
+																	{{forloop.counter}}
                                                                     <div class="serImg">
                                                                             <img src="{%static ""%}{{workshop.img}}" alt="">
                                                                     </div>
@@ -123,8 +124,9 @@
                                                                     <a href="#" class="learn">Learn more</a>
                                                             </div>
                                                     </div>
+
                                                 {%endfor%}
-												<div class="clearfix"></div>
+
 												<!-- <div class="col-lg-12 text-center">
 														<a href="#" class="bes_button">Learn more about us <i class="flaticon-arrows"></i></a>
 												</div> -->
@@ -448,33 +450,37 @@
 	</div>
 	<!-- /Galery -->
 
+
    <section class="contactform" id="contactform">
 						<div class="container">
+
 								<div class="row">
 										<div class="col-lg-12 text-center">
 												<div class="contactInner">
 														<h3 class="magenta light">Have a question? or just say hello!</h3>
 														<div class="contactForm">
 																<form action="#" method="post" id="contactForm">
+																	{% csrf_token %}
 																		<div class="row">
 																				<div class="col-sm-6">
 																						<div class="single_form">
+
 																								<label for="con_name">Name:</label>
-																								<input type="text" name="con_name" id="con_name" class="required">
+																								{{enquiry_form.name}}
 																						</div>
 																				</div>
 
 																				<div class="col-sm-6">
 																						<div class="single_form">
 																								<label for="con_email">Email:</label>
-																								<input type="email" name="con_email" id="con_email" class="required">
+																								{{enquiry_form.email}}
 																						</div>
 																				</div>
 
 																				<div class="col-sm-12">
 																						<div class="single_form">
 																								<label for="con_msg">Message:</label>
-																								<textarea id="con_msg" name="con_msg" class="required"></textarea>
+																								{{enquiry_form.message}}
 																						</div>
 																				</div>
 																				<div class="col-sm-12 text-center">
